@@ -13,7 +13,7 @@
   "dependencies": {
     "http-proxy": "*",
     "nopt": "*",
-    "underscore": "*",
+    "underscore": "~1.5.2",
     "seed-random": "*"
   }
 }
