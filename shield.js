@@ -50,19 +50,19 @@ function currently_blacklisted(ip) {
     return (hits[ip] > 2);
 }
 
-// 10 times per second, decrease the hit count of some of the ips. 
+// several times per second, decrease the hit count of some of the ips. 
 // Chances of a decrease are higher if the IP has fewer hits already.
 function decrementHits(){
     hits = _.map(hits, function(hits) {
         if (!hits) return 0;
-        if (Math.random() > (1/hits) ) {
+        if (hits < 2 || Math.random() > (1/hits) ) {
             return hits-1;
         } else {
             return hits;
         }
     });
 }
-setInterval(decrementHits, 200);
+setInterval(decrementHits, 150);
 
 function checkBackends(targets, path, response) {
   var toCheck = targets.map(function (target) {
