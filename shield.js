@@ -47,7 +47,7 @@ var hits = {};
 function currently_blacklisted(ip) {
     hits[ip] = hits[ip] || 0;
     hits[ip]++;
-    return (hits[ip] > 3);
+    return (hits[ip] > 2);
 }
 
 // 10 times per second, decrease the hit count of some of the ips. 
@@ -62,7 +62,7 @@ function decrementHits(){
         }
     });
 }
-setInterval(decrementHits, 300);
+setInterval(decrementHits, 200);
 
 function checkBackends(targets, path, response) {
   var toCheck = targets.map(function (target) {
